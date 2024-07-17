@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import useMousePosition from "./components/useMousePosition";
+import useOnline from "./components/useOnline";
 
 const App = () => {
   const [tracking, setTracking] = useState();
   const {x, y} = useMousePosition();
+  const isOnline = useOnline;
 
   const trackingHandler = () => {
     setTracking(true);
@@ -15,6 +17,13 @@ const App = () => {
         {tracking && (
           <div>mouse is at position of {x} in x and {y} in y</div>
         )}
+      </div>
+
+      <div>
+        <button>
+          status : {isOnline ? "online": "offline"}
+        </button>
+        
       </div>
     </>
   )
